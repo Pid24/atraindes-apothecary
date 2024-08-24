@@ -14,7 +14,7 @@
 <body>
 
     <div class="flex flex-col items-center px-6 py-10 min-h-dvh">
-        <img src="{{ asset('assets/svgs/logo.svg') }}" class="mb-[53px]" alt="Logo">
+        <img src="{{ asset('assets/svgs/logos.svg') }}" class="mb-[53px]" alt="Logo">
         <form action="{{ route('register') }}" method="POST"
             class="mx-auto max-w-[345px] w-full p-6 bg-white rounded-3xl mt-auto" id="deliveryForm">
             @csrf
@@ -53,7 +53,7 @@
                 </button>
             </div>
         </form>
-        <a href="./login.html" class="font-semibold text-base mt-[30px] underline">
+        <a href="{{ route('login') }}" class="font-semibold text-base mt-[30px] underline">
             Sign In to My Account
         </a>
     </div>

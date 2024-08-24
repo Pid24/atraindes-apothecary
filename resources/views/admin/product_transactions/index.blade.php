@@ -13,17 +13,19 @@
 
                 @forelse ($product_transactions as $transaction)
                     <div class="flex flex-row items-center justify-between item-card">
-                        <div class="flex flex-row items-center gap-x-3">
-                            <div>
-                                <p class="text-base text-slate-500">
-                                    Total Transaksi
-                                </p>
-                                <h3 class="text-xl font-bold text-indigo-950">
-                                    Rp {{ $transaction->total_amount }}
-                                </h3>
+                        <a href="{{ route('product_transactions.show', $transaction) }}">
+                            <div class="flex flex-row items-center gap-x-3">
+                                <div>
+                                    <p class="text-base text-slate-500">
+                                        Total Transaksi
+                                    </p>
+                                    <h3 class="text-xl font-bold text-indigo-950">
+                                        Rp {{ $transaction->total_amount }}
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
-                        <div>
+                        </a>
+                        <div class="flex-col hidden md:flex">
                             <p class="text-base text-slate-500">
                                 Date
                             </p>
@@ -44,12 +46,13 @@
                                 </p>
                             </span>
                         @endif
-                        <div class="flex flex-row items-center gap-x-3">
+                        <div class="flex-row items-center hidden md:flex gap-x-3">
                             <a href="{{ route('product_transactions.show', $transaction) }}"
                                 class="px-5 py-3 font-bold text-white bg-indigo-700 rounded-full">View
                                 Details</a>
                         </div>
                     </div>
+
                     <hr class="my-3">
                 @empty
                     <p>

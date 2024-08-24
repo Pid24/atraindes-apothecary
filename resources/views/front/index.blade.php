@@ -20,7 +20,12 @@
             </div>
             <div class="">
                 <p class="text-base font-semibold capitalize text-primary">
-                    Angga King
+                    @auth
+                        {{ Auth::user()->name }}
+                    @endauth
+                    @guest
+                        Anonim
+                    @endguest
                 </p>
                 <p class="text-sm">
                     Customer
@@ -69,7 +74,7 @@
                     Orders
                 </p>
             </a>
-            <a href="#" class="flex flex-col items-center justify-center gap-1 px-1 group">
+            <a href="{{ route('dashboard') }}" class="flex flex-col items-center justify-center gap-1 px-1 group">
                 <img src="{{ asset('assets/svgs/ic-profile.svg') }}"
                     class="filter-to-grey group-[.is-active]:filter-to-primary" alt="">
                 <p

@@ -15,7 +15,13 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        $my_carts = $user->carts()->with('product')->get();
+
+        return view('front.carts', [
+            'my_carts' => $my_carts
+        ]);
     }
 
     /**
@@ -91,6 +97,15 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        //
+        try {
+            $cart->delete();
+            return redirect()->back();
+        } catch(\Exception $e) {
+            DB::rollBack();
+            $error = ValidationException::withMessages([
+                'system_error' => ['System error!' . $e->getMessage()],
+            ]);
+            throw $error;
+        }
     }
 }
